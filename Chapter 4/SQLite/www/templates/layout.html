@@ -1,0 +1,25 @@
+<ion-side-menus enable-menu-with-back-views="true">
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar bar-dark">
+      <ion-nav-buttons side="left">
+        <button class="button button-icon icon ion-navicon" menu-toggle="left"></button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <ion-nav-view name="main" animation="slide-left-right"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left" width="150">
+    <ion-content>
+      <ion-list>
+        <ion-item class="item" ui-sref="app.users" menu-close>
+          Users
+        </ion-item>
+        <ion-item class="item" ui-sref="app.groups" menu-close>
+          Groups
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+
+</ion-side-menus>

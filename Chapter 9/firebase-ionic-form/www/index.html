@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs/firebase js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/firebase/firebase-v2.2.4.js"></script>
+    <script src="lib/firebase/angularfire-v1.1.1.min.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+  </head>
+  <body ng-app="starter" ng-controller="FormCtrl" class="full-screen">
+    <div class="bar bar-header">
+      <button class="button" ng-if="data.currentSlide > 0" ng-click="data.currentSlide = data.currentSlide - 1">
+        <i class="icon ion-chevron-left"></i>
+        Back
+      </button>
+      <h1 class="title">Step {{ data.currentSlide + 1 }}</h1>
+      <button class="button button-positive" ng-if="data.currentSlide < 2" ng-click="data.currentSlide = data.currentSlide + 1">
+        Next
+        <i class="icon ion-chevron-right"></i>
+      </button>
+      <button class="button button-positive" ng-if="data.currentSlide == 2" ng-disabled="data.completed" ng-click="submit()">
+        Purchase
+      </button>
+    </div>
+    <div class="has-header full-screen">
+      <ion-slide-box active-slide="data.currentSlide">
+        <ion-slide>
+          <div class="list">
+            <label class="item item-input">
+              <span class="input-label">First</span>
+              <input type="text" ng-model="formData.first">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Last</span>
+              <input type="text" ng-model="formData.last">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">Email</span>
+              <input type="email" ng-model="formData.email">
+            </label>
+          </div>
+        </ion-slide>
+        <ion-slide>
+          <div class="list">
+            <label class="item item-input">
+              <input type="text" pattern="\d*" placeholder="Card Number" ng-model="formData.cc">
+            </label>
+            <label class="item item-input">
+              <input type="text" pattern="\d*" placeholder="CVC" maxlength="4" ng-model="formData.cvc">
+            </label>
+            <label class="item item-input">
+              <input type="text" pattern="\d*" placeholder="Expiration" maxlength="4" ng-model="formData.exp">
+            </label>
+          </div>
+        </ion-slide>
+        <ion-slide>
+          <ul class="list">
+            <li class="item item-input item-select">
+              <div class="input-label">
+                LCD TV
+              </div>
+              <select ng-model="formData.model">
+                <option value="60-in" selected>60 Inches</option>
+                <option value="65-in">65 Inches</option>
+                <option value="70-in">70 Inches</option>
+              </select>
+            </li>
+            <li class="item item-toggle">
+               Extended Warranty
+               <label class="toggle toggle-assertive">
+                 <input type="checkbox" ng-model="formData.warranty">
+                 <div class="track">
+                   <div class="handle"></div>
+                 </div>
+               </label>
+            </li>
+          </ul>
+          <h4 class="balanced" ng-if="data.completed">Your purchase has been completed!</h4>
+        </ion-slide>
+      </ion-slide-box>
+    </div>
+  </body>
+</html>

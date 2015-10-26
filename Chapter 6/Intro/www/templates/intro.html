@@ -1,0 +1,50 @@
+<ion-nav-view class="intro">
+  <ion-header-bar align-title="middle" class="bar-balanced bar">
+    <button class="button button-icon icon ion-ios-arrow-back" ng-if="slides.currentSlide > 0" ng-click="slides.currentSlide = slides.currentSlide-1">
+    </button>
+    <span class="title" ng-bind-html="title"></span>
+    <button class="button button-clear" ui-sref="app">
+      Skip
+    </button>
+  </ion-header-bar>
+  <ion-content class="has-footer" scroll="false">
+    <ion-slide-box active-slide="slides.currentSlide" on-slide-changed="slideChanged(index)">
+      <ion-slide class="center">
+        <div class="row">
+          <div class="col">
+            <h1>Beautiful App</h1>
+            <div class="center-image">
+              <i class="icon ion-ionic"></i>
+            </div>
+            <p>Flat design with easy navigation.</p>
+          </div>
+        </div>
+      </ion-slide>
+      <ion-slide class="center">
+        <div class="row">
+          <div class="col">
+            <h1>Useful Content</h1>
+            <div class="center-image">
+              <i class="icon ion-ios-paper"></i>
+            </div>
+            <p>Daily update content for your needs.</p>
+          </div>
+        </div>
+      </ion-slide>
+      <ion-slide class="center">
+        <div class="row">
+          <div class="col">
+            <h1>Lowest Price</h1>
+            <div class="center-image">
+              <i class="icon ion-social-usd"></i>
+            </div>
+            <p>Beat all competitor offerings.</p>
+          </div>
+        </div>
+      </ion-slide>
+    </ion-slide-box>
+  </ion-content>
+  <ion-footer-bar align-title="center" class="bar-balanced darker-balanced" ui-sref="app" ng-if="slides.currentSlide == 2">
+    <span class="title">Get Started</span>
+  </ion-footer-bar>
+</ion-nav-view>

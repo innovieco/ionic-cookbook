@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+
+    <!-- compiled css output -->
+    <link href="css/ionic.app.css" rel="stylesheet">
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+  </head>
+  <body ng-app="starter" ng-controller="AppCtrl">
+    <ion-nav-bar class="bar bar-stable">
+      <ion-nav-back-button ng-show="!hideBackButton">
+      </ion-nav-back-button>
+    </ion-nav-bar>
+
+    <ion-nav-view></ion-nav-view>
+
+    <script id="templates/step1.html" type="text/ng-template">
+      <ion-view>
+        <ion-nav-buttons side="primary">
+          <h1 class="title">Step 1</h1>
+          <button class="button button-positive" ng-click="submit()" ui-sref="step2">
+            Next
+          </button>
+        </ion-nav-buttons>
+        <ion-content>
+          <form name="step1Form" ng-controller="Step1FormCtrl" novalidate>
+            <div class="list">
+              <label class="item item-input">
+                <input type="text" placeholder="First Name" name="firstname" ng-model="data.firstname" required>
+              </label>
+              <div class="item item-message" ng-if="step1Submitted && step1Form.firstname.$error.required">
+                First name is required
+              </div>
+              <label class="item item-input">
+                <input type="text" placeholder="Middle Name" name="middlename" ng-model="data.middlename">
+              </label>
+              <label class="item item-input">
+                <input type="text" placeholder="Last Name" name="lastname" ng-model="data.lastname" required>
+              </label>
+              <div class="item item-message" ng-if="step1Submitted && step1Form.lastname.$error.required">
+                Last name name is required
+              </div>
+            </div>
+          </form>
+        </ion-content>
+      </ion-view>
+    </script>
+
+    <script id="templates/step2.html" type="text/ng-template">
+      <ion-view>
+        <ion-nav-buttons side="primary">
+          <h1 class="title">Step 2</h1>
+          <button class="button button-positive" ng-click="submit()" ui-sref="step3">
+            Next
+          </button>
+        </ion-nav-buttons>
+        <ion-content>
+          <form name="step2Form" ng-controller="Step2FormCtrl" novalidate>
+            <div class="list">
+              <label class="item item-input">
+                <input type="tel" placeholder="Cell phone" name="cell" ng-model="data.cell">
+              </label>
+              <label class="item item-input">
+                <input type="email" placeholder="Email" name="email" ng-model="data.email">
+              </label>
+              <div class="item item-message" ng-if="step2Submitted && step2Form.email.$error.email">
+                Email address is invalid
+              </div>
+            </div>
+          </form>
+        </ion-content>
+      </ion-view>
+    </script>
+
+    <script id="templates/step3.html" type="text/ng-template">
+      <ion-view>
+        <ion-nav-buttons side="primary">
+          <h1 class="title">Step 3</h1>
+          <button class="button button-positive" ng-click="submit()" ui-sref="done">
+            Done
+          </button>
+        </ion-nav-buttons>
+        <ion-content>
+          <form name="step3Form" ng-controller="Step3FormCtrl" novalidate>
+            <div class="list">
+              <label class="item item-input">
+                <textarea placeholder="Comments" name="comments" ng-model="data.comments" rows=10></textarea>
+              </label>
+              <div class="item item-checkbox">
+                 <label class="checkbox">
+                   <input type="checkbox" name="tos" ng-model="data.tos" ng-click="checkTos()">
+                 </label>
+                 Agree to Terms of Service
+              </div>
+              <div class="item item-message" ng-if="step3Submitted && step3Form.tos.$error.agree">
+                You must agree to Terms of Service
+              </div>
+            </div>
+          </form>
+        </ion-content>
+      </ion-view>
+    </script>
+
+    <script id="templates/done.html" type="text/ng-template">
+      <ion-view>
+        <ion-nav-buttons side="primary">
+          <button class="button button-positive" ui-sref="step1" ng-click="reset()">
+            Start Over
+          </button>
+          <h1 class="title">Thank You</h1>
+        </ion-nav-buttons>
+        <ion-content>
+          <div class="list">
+            <div class="item" ng-if="data.firstname">
+              <b>First name:</b> {{ data.firstname }}
+            </div>
+            <div class="item" ng-if="data.middlename">
+              <b>Middle name:</b> {{ data.middlename }}
+            </div>
+            <div class="item" ng-if="data.lastname">
+              <b>Last name:</b> {{ data.lastname }}
+            </div>
+            <div class="item" ng-if="data.cell">
+              <b>Cell:</b> {{ data.cell }}
+            </div>
+            <div class="item" ng-if="data.email">
+              <b>Email:</b> {{ data.email }}
+            </div>
+            <div class="item" ng-if="data.comments">
+              <b>Comments:</b> {{ data.comments }}
+            </div>
+            <div class="item" ng-if="data.tos">
+              <b>Terms of Service:</b> {{ data.tos }}
+            </div>
+          </div>
+        </ion-content>
+      </ion-view>
+    </script>
+
+  </body>
+</html>

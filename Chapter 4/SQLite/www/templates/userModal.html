@@ -1,0 +1,17 @@
+<ion-modal-view>
+  <ion-header-bar class="bar bar-dark">
+    <button class="button button-clear" ng-click="cancel()">Cancel</button>
+    <h1 class="title">User Detail</h1>
+    <button class="button button-clear" ng-click="save(user, usergroup)">Save</button>
+  </ion-header-bar>
+  <ion-content>
+    <div class="list">
+      <label class="item item-checkbox" ng-repeat="group in groups">
+        <label class="checkbox">
+          <input type="checkbox" ng-model="usergroup[$index]">
+        </label>
+        {{ group.name }}
+      </label>
+    </div>
+  </ion-content>
+</ion-modal-view>

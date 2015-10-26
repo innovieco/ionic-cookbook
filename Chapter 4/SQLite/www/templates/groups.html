@@ -1,0 +1,17 @@
+<ion-view view-title="Groups">
+  <ion-nav-buttons side="right">
+    <button class="button button-icon button-clear ion-plus" ng-click="openGroupModal()"></button>
+  </ion-nav-buttons>
+  <ion-content>
+    <div class="list">
+      <div ng-repeat="group in groups">
+        <label class="item item-divider">
+          {{ group.name }}
+        </label>
+        <label class="item" ng-repeat="user in group.users">
+          {{ user.name }}
+        </label>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+
+    <!-- compiled css output -->
+    <link href="css/ionic.app.css" rel="stylesheet">
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+  </head>
+  <body ng-app="starter" ng-controller="MainCtrl">
+    <ion-pane>
+      <ion-header-bar class="bar-stable">
+        <h1 class="title">Events</h1>
+      </ion-header-bar>
+      <ion-content scroll="false">
+
+        <div class="item item-divider">
+          Free Scroll
+          <span class="item-note">
+            More
+          </span>
+        </div>
+
+        <ion-scroll direction="x" class="horizontal-scroll padding" ng-controller="FirstCtrl">
+          <button class="button button-positive button-large" ng-click="broadcast('Ionic')">
+            <i class="icon ion-ionic"></i>
+          </button> 
+          <button class="button button-calm button-large" ng-click="broadcast('Twitter')">
+            <i class="icon ion-social-twitter"></i>
+          </button> 
+          <button class="button button-balanced button-large" ng-click="broadcast('Facebook')">
+            <i class="icon ion-social-facebook"></i>
+          </button> 
+          <button class="button button-energized button-large" ng-click="broadcast('Googleplus')">
+            <i class="icon ion-social-googleplus"></i>
+          </button> 
+          <button class="button button-assertive button-large" ng-click="broadcast('Dribbble')">
+            <i class="icon ion-social-dribbble"></i>
+          </button>
+          <button class="button button-royal button-large" ng-click="broadcast('Octocat')">
+            <i class="icon ion-social-octocat"></i>
+          </button>
+          <button class="button button-dark button-large" ng-click="broadcast('Instagram')">
+            <i class="icon ion-social-instagram"></i>
+          </button> 
+        </ion-scroll>
+
+        <div class="item item-divider">
+          Slide-by-Slide Scroll
+          <span class="item-note">
+            More
+          </span>
+        </div>
+
+        <div ng-controller="SecondCtrl">
+          <ion-slide-box show-pager="false">
+            <ion-slide class="padding">
+              <button class="button button-block button-positive" ng-click="changeMyData('POSITIVE')">
+                POSITIVE
+              </button>
+            </ion-slide>
+            <ion-slide class="padding">
+              <button class="button button-block button-calm" ng-click="changeMyData('CALM')">
+                CALM
+              </button>
+            </ion-slide>
+            <ion-slide class="padding">
+              <button class="button button-block button-balanced" ng-click="changeMyData('BALANCED')">
+                BALANCED
+              </button>
+            </ion-slide>
+          </ion-slide-box>
+        </div>
+
+        <div class="item item-divider">
+          Logs
+        </div>
+
+        <div ng-controller="ThirdCtrl">
+          <ul class="list">
+            <li class="item">
+              <b>myEvent </b> {{ display.value }}
+            </li>
+            <li class="item">
+              <b>myData </b> <my-directive data="myData"></my-directive>
+            </li>
+          </ul>
+        </div>
+        
+      </ion-content>
+    </ion-pane>
+  </body>
+</html>

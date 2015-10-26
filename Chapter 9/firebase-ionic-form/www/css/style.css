@@ -1,0 +1,11 @@
+.full-screen {
+  position: fixed;
+} 
+
+body > div.has-header.full-screen {
+  height: 100%;
+}
+
+.slider {
+  height: 100%;
+}
